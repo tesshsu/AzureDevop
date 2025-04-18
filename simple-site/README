@@ -1,0 +1,63 @@
+# Azure Static Web App Deployment
+
+This project demonstrates how to deploy a static web app to Azure using Azure Static Web Apps and GitHub.
+
+## Prerequisites
+
+Before you begin, ensure you have the following:
+
+- An active Azure account. If you don't have one, you can [create a free Azure account](https://azure.microsoft.com/en-us/free/).
+- Azure CLI installed on your machine. If you don't have it, you can install it from the [official documentation](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
+- A GitHub repository with the code you want to deploy.
+
+## Steps
+
+### 1. Install Azure CLI
+
+Ensure that the Azure CLI is installed on your machine. You can install it by running:
+
+```bash
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+brew install azure-cli
+```
+
+### 2. Run Azure CLI
+- $ az login
+- $ az staticwebapp create \
+  --name AiliStaticWeb \
+  --resource-group Aili \
+  --location "westeurope" \
+  --branch main \
+  --source https://github.com/tesshsu/AzureDevop \
+  --app-location "simple-site" \
+  --output-location "." \
+  --sku Free
+
+## Key Parameters:
+--name: The name of your static web app.
+
+--resource-group: The Azure resource group to store your app.
+
+--location: The region where your app will be deployed (e.g., "westeurope").
+
+--branch: The GitHub branch you want to deploy from (e.g., "main").
+
+--source: The GitHub repository URL.
+
+--app-location: Path to the directory containing the app files (e.g., "simple-site").
+
+--output-location: The directory where the output of the build will be placed.
+
+--sku: The pricing tier for the web app. The Free tier is recommended for testing and basic usage.
+
+
+### 3. Authenticate with GitHub
+You will be prompted to authenticate with GitHub using a device code:
+- az login --use-device-code
+You will receive a code to enter at GitHub Device Login. Once authenticated, the static web app will be created and linked to your GitHub repository
+
+### 4. Access Your Static Web App
+After the deployment process is complete, your static web app will be available at a URL like this:
+- https://<randomly generated subdomain>.<unique identifier for the app>.6.azurestaticapps.net
+For example:
+- https://witty-field-03d144f03.6.azurestaticapps.net
