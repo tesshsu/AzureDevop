@@ -10,6 +10,16 @@ Before you begin, ensure you have the following:
 - Azure CLI installed on your machine. If you don't have it, you can install it from the [official documentation](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
 - A GitHub repository with the code you want to deploy.
 
+simple-site
+├── index.html
+├── styles.css        (likely for styling the site)
+├── script.js         (likely for site interactivity)
+└── assets            (directory for static assets)
+    ├── images
+    │   └── logo.png
+    └── fonts
+        └── custom-font.ttf
+
 ## Steps
 
 ### 1. Install Azure CLI
@@ -33,6 +43,7 @@ brew install azure-cli
   --output-location "." \
   --sku Free
 
+
 ## Key Parameters:
 --name: The name of your static web app.
 
@@ -49,6 +60,13 @@ brew install azure-cli
 --output-location: The directory where the output of the build will be placed.
 
 --sku: The pricing tier for the web app. The Free tier is recommended for testing and basic usage.
+
+
+## Optional operations:
+# List all Static Web Apps
+-- $ az staticwebapp list \
+  --resource-group Aili \
+  --output table
 
 
 ### 3. Authenticate with GitHub
